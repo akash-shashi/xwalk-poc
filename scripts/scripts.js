@@ -117,16 +117,32 @@ async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
 
+  // ✅ Ensure header exists
+  let header = doc.querySelector('header');
+  if (!header) {
+    header = document.createElement('header');
+    document.body.prepend(header);
+  }
+
+  // Ensure footer exists
+  let footer = doc.querySelector('footer');
+  if (!footer) {
+    footer = document.createElement('footer');
+    document.body.append(footer);
+  }
+
+  // Load global header/footer content
+  loadHeader(header);
+  loadFooter(footer);
+
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadHeader(doc.querySelector('header'));
-  loadFooter(doc.querySelector('footer'));
-
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 }
+
 
 /**
  * Loads everything that happens a lot later,

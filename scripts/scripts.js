@@ -117,7 +117,7 @@ async function loadLazy(doc) {
   const main = doc.querySelector('main');
   await loadSections(main);
 
-  // ✅ Ensure header exists
+  // Ensure header exists
   let header = doc.querySelector('header');
   if (!header) {
     header = document.createElement('header');
@@ -142,7 +142,6 @@ async function loadLazy(doc) {
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 }
-
 
 /**
  * Loads everything that happens a lot later,

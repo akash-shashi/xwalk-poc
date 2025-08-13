@@ -14,6 +14,7 @@
       "title",
       "hero",
       "cards",
+      "custom-cards",
       "columns",
       "fragment"
     ]
@@ -22,6 +23,12 @@
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "custom-cards",
+    "components": [
+      "custom-card"
     ]
   },
   {

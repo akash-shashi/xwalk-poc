@@ -50,6 +50,17 @@
             "valueType": "string"
           },
           {
+            "component": "multiselect",
+            "name": "style",
+            "label": "Style",
+            "options": [
+              {
+                "name": "Bordered-card",
+                "value": "bordered-card"
+              }
+            ]
+          },
+          {
             "component": "link",
             "name": "link",
             "label": "Link",

@@ -28,6 +28,15 @@
       ]
     },
     {
+      "title": "Custom-Cards",
+      "id": "custom-cards",
+      "components": [
+        {
+          "...": "./_custom-cards.json#/definitions"
+        }
+      ]
+    },
+    {
       "title": "Blocks",
       "id": "blocks",
       "components": [

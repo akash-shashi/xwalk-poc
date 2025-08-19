@@ -256,7 +256,7 @@ main .section.highlight {
   padding: 40px 0;
 }
 
-main .custom-cards.bordered-card ul li{
+main .section.bordered-card ul li{
   border:2px solid var(--dark-color);
   border-radius: 8px;
   padding: 10px;
@@ -267,7 +267,7 @@ main .custom-cards.bordered-card ul li{
   text-align: center;
 }
 
-main .custom-cards.bordered-card ul li:hover {
+main .section.bordered-card ul li:hover {
   background-color: var(--dark-color);
   color: var(--light-color);
 }

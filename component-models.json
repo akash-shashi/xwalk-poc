@@ -161,6 +161,22 @@
     ]
   },
   {
+    "id": "custom-cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Highlight",
+            "value": "highlight"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "custom-card",
     "fields": [
       {
@@ -191,17 +207,6 @@
         "component": "text",
         "name": "linkTitle",
         "label": "Link Title"
-      },
-      {
-        "component": "multiselect",
-        "name": "style",
-        "label": "Style",
-        "options": [
-          {
-            "name": "Bordered-card",
-            "value": "bordered-card"
-          }
-        ]
       },
       {
         "component": "select",

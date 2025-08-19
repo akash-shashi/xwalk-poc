@@ -169,8 +169,8 @@
         "label": "Style",
         "options": [
           {
-            "name": "Highlight",
-            "value": "highlight"
+            "name": "Bordered-card",
+            "value": "bordered-card"
           }
         ]
       }

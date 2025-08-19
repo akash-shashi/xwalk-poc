@@ -1,0 +1,14 @@
+{
+    "id": "custom-cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [
+          { "name": "Bordered Card", "value": "bordered-card" }
+        ]
+      }
+    ]
+  }
+  

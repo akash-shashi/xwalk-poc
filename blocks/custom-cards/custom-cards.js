@@ -2,10 +2,14 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  // change to ul, li
   const ul = document.createElement('ul');
 
-  [...block.children].forEach((row) => {
+  Array.from(block.children).forEach((row) => {
+    // Skip empty placeholder rows from UE
+    if (!row.querySelector('img, picture, a, p, [data-aue-prop], [data-aue-resource]')) {
+      return;
+    }
+
     const li = document.createElement('li');
     moveInstrumentation(row, li);
 
@@ -15,7 +19,7 @@ export default function decorate(block) {
     }
 
     // Assign proper classes
-    [...li.children].forEach((div) => {
+    Array.from(li.children).forEach((div) => {
       if (div.querySelector('picture') || div.querySelector('[data-aue-prop="image"]')) {
         div.className = 'cards-card-image';
       } else if (div.querySelector('a') || div.querySelector('[data-aue-prop="linkText"]')) {
@@ -23,7 +27,8 @@ export default function decorate(block) {
       } else {
         div.className = 'cards-card-body';
       }
-    });  
+    });
+
     ul.append(li);
   });
 
@@ -31,15 +36,17 @@ export default function decorate(block) {
   ul.querySelectorAll('picture > img').forEach((img) => {
     const optimizedPic = createOptimizedPicture(
       img.src,
-      img.alt,
+      img.alt || '',
       false,
-      [{ width: '750' }],
+      [{ width: 750 }],
     );
     moveInstrumentation(img, optimizedPic.querySelector('img'));
-    img.closest('picture').replaceWith(optimizedPic);
+    const picture = img.closest('picture');
+    if (picture) {
+      picture.replaceWith(optimizedPic);
+    }
   });
 
   // Replace block content
-  block.textContent = '';
-  block.append(ul);
+  block.replaceChildren(ul);
 }

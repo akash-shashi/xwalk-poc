@@ -46,6 +46,12 @@
               "value": "bordered-card"
             }
           ]
+        },
+        {
+          "component": "collection",
+          "name": "cards",
+          "label": "Cards",
+          "item": "custom-card"
         }
       ]
     },

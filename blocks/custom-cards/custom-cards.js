@@ -16,16 +16,14 @@ export default function decorate(block) {
 
     // Assign proper classes
     [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) {
+      if (div.querySelector('picture') || div.querySelector('[data-aue-prop="image"]')) {
         div.className = 'cards-card-image';
-      } else if (div.querySelector('a')) {
-        // link container
+      } else if (div.querySelector('a') || div.querySelector('[data-aue-prop="linkText"]')) {
         div.className = 'cards-card-link';
       } else {
         div.className = 'cards-card-body';
       }
-    });
-
+    });  
     ul.append(li);
   });
 

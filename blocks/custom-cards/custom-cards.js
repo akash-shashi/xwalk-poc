@@ -2,10 +2,16 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
-  // change to ul, li
   const ul = document.createElement('ul');
 
-  [...block.children].forEach((row) => {
+  Array.from(block.children).forEach((row) => {
+    // Skip placeholder rows from Universal Editor (no meaningful content)
+    if (
+      !row.querySelector('img, picture, a, p, [data-aue-prop], [data-aue-resource]')
+    ) {
+      return;
+    }
+
     const li = document.createElement('li');
     moveInstrumentation(row, li);
 
@@ -15,11 +21,10 @@ export default function decorate(block) {
     }
 
     // Assign proper classes
-    [...li.children].forEach((div) => {
+    Array.from(li.children).forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'cards-card-image';
-      } else if (div.querySelector('a')) {
-        // link container
+      } else if (div.querySelector('a') || div.querySelector('[data-aue-prop="linkText"]')) {
         div.className = 'cards-card-link';
       } else {
         div.className = 'cards-card-body';

@@ -281,11 +281,46 @@
       },
       {
         "component": "richtext",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "config": {
+          "toolbar": [
+            "heading",
+            "bold",
+            "italic",
+            "underline",
+            "alignment:left",
+            "alignment:center"
+          ],
+          "plugins": [
+            "Heading",
+            "Alignment"
+          ]
+        }
+      },
+      {
+        "component": "richtext",
         "name": "text",
-        "value": "",
         "label": "Text",
-        "valueType": "string"
+        "value": "",
+        "valueType": "string",
+        "config": {
+          "toolbar": [
+            "bold",
+            "italic",
+            "underline",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "alignment:left",
+            "alignment:center"
+          ],
+          "plugins": [
+            "Alignment"
+          ]
+        }
       }
     ]
-  }
+  }  
 ]

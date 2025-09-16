@@ -2,19 +2,30 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
- * loads and decorates the footer
+ * Loads and decorates the footer
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  // load footer as fragment
+  // Get footer path from metadata if available
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  const fragment = await loadFragment(footerPath);
+  let footerPath;
 
-  // decorate footer DOM
+  if (footerMeta) {
+    footerPath = new URL(footerMeta, window.location).pathname;
+  } else {
+    footerPath = '/footer'; // Change if your fragment is at /en/footer
+  }
+
+  // Force absolute URL so it works in Universal Editor too
+  const fragment = await loadFragment(`${window.location.origin}${footerPath}`);
+
+  // Decorate footer DOM
   block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-
-  block.append(footer);
+  if (fragment) {
+    const footer = document.createElement('div');
+    while (fragment.firstElementChild) {
+      footer.append(fragment.firstElementChild);
+    }
+    block.append(footer);
+  }
 }

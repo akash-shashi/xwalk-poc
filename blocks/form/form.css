@@ -428,7 +428,9 @@ main form .file-wrapper > button{
 }
 
 main .form button:hover {
-    background: var(--form-button-background-hover-color);
+    border: 3px solid #fff;
+    color: #fff;
+    background-color: var(--button-secondary-color);
 }
 
 main .submit-wrapper{
@@ -517,7 +519,7 @@ main .form .button-wrapper button {
 }
 
 main .form .button-wrapper button:hover {
-    border: 3px solid var(#fff);
+    border: 3px solid #fff;
     color: #fff;
     background-color: var(--button-secondary-color);
 }

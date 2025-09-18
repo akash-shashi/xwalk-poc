@@ -512,30 +512,38 @@ export default async function decorate(block) {
   let container = block.querySelector('a[href]');
   let formDef;
   let pathname;
+  console.log('Decorate form');
   if (container) {
+    console.log('Decorate form 1');
     ({ pathname } = new URL(container.href));
     formDef = await fetchForm(container.href);
   } else {
+    console.log('Decorate form 2');
     ({ container, formDef } = extractFormDefinition(block));
   }
   let source = 'aem';
   let rules = true;
   let form;
+  console.log('Decorate form 3');
   if (formDef) {
+    console.log('Decorate form 4');
     const submitProps = formDef?.properties?.['fd:submit'];
     const actionType = submitProps?.actionName || formDef?.properties?.actionType;
     const spreadsheetUrl = submitProps?.spreadsheet?.spreadsheetUrl
       || formDef?.properties?.spreadsheetUrl;
-
+console.log('Decorate form 5');
     if (actionType === 'spreadsheet' && spreadsheetUrl) {
+      console.log('Decorate form 6');
       // Check if we're in an iframe and use parent window path if available
       const iframePath = window.frameElement ? window.parent.location.pathname
         : window.location.pathname;
       formDef.action = SUBMISSION_SERVICE + btoa(pathname || iframePath);
     } else {
+      console.log('Decorate form 7');
       formDef.action = getSubmitBaseUrl() + (formDef.action || '');
     }
     if (isDocumentBasedForm(formDef)) {
+      console.log('Decorate form 8');
       const transform = new DocBasedFormToAF();
       formDef = transform.transform(formDef);
       source = 'sheet';
@@ -545,6 +553,7 @@ export default async function decorate(block) {
       docRuleEngine.default(formDef, form);
       rules = false;
     } else {
+      console.log('Decorate form 9');
       afModule = await import('./rules/index.js');
       addRequestContextToForm(formDef);
       if (afModule && afModule.initAdaptiveForm && !block.classList.contains('edit-mode')) {

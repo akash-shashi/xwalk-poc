@@ -531,7 +531,7 @@ export default async function decorate(block) {
     const actionType = submitProps?.actionName || formDef?.properties?.actionType;
     const spreadsheetUrl = submitProps?.spreadsheet?.spreadsheetUrl
       || formDef?.properties?.spreadsheetUrl;
-console.log('Decorate form 5');
+    console.log('Decorate form 5');
     if (actionType === 'spreadsheet' && spreadsheetUrl) {
       console.log('Decorate form 6');
       // Check if we're in an iframe and use parent window path if available

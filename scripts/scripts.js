@@ -72,6 +72,24 @@ function buildAutoBlocks() {
 }
 
 /**
+ * Adds 'external-link' class to external links and ensures they open in a new tab.
+ */
+function decorateExternalLinks() {
+  const links = document.querySelectorAll('a'); // Select all anchor tags
+
+  links.forEach((link) => {
+    const href = link.getAttribute('href');
+
+    // Check if the link is external
+    if (href && !href.startsWith(window.location.origin) && !href.startsWith('/') && !href.startsWith('#')) {
+      link.classList.add('external-link'); // Add the external-link class
+      link.setAttribute('target', '_blank'); // Open in a new tab
+      link.setAttribute('rel', 'noopener noreferrer'); // Security best practice
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -95,6 +113,7 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    decorateExternalLinks();
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }

@@ -412,6 +412,13 @@ function decorateButtons(element) {
     if (a.href !== a.textContent) {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
+
+      // Check if the parent div has data-aue-type="richtext"
+      const containerDiv = up.closest('div[data-aue-type="richtext"]');
+      if (containerDiv) {
+        return; // Skip processing if the div has data-aue-type="richtext"
+      }
+
       if (!a.querySelector('img')) {
         if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
           a.className = 'button'; // default

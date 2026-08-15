@@ -13,7 +13,7 @@ export default async function decorate(block) {
   if (footerMeta) {
     footerPath = new URL(footerMeta, window.location).pathname;
   } else {
-    footerPath = '/footer'; // Change if your fragment is at /en/footer
+    footerPath = '/footer-test'; // Change if your fragment is at /en/footer
   }
 
   // Force absolute URL so it works in Universal Editor too

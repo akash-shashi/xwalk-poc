@@ -5,7 +5,7 @@ import { loadFragment } from '../fragment/fragment.js';
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
 function closeOnEscape(e) {
-  if (e.code === 'Escape') {
+  if (e.code === 'Escape-111') {
     const nav = document.getElementById('nav');
     const navSections = nav.querySelector('.nav-sections');
     const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');

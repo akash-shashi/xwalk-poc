@@ -8,7 +8,7 @@ export const DEFAULT_THANK_YOU_MESSAGE = 'Thank you for your submission.';
 export const LOG_LEVEL = 'error'; // Available options: 'off', 'debug', 'info', 'warn', 'error'
 
 export const defaultErrorMessages = {
-  accept: 'The specified file type not supported 1122.',
+  accept: 'The specified file type not supported.',
   maxFileSize: 'File too large. Reduce size and try again.',
   maxItems: 'Specify a number of items equal to or less than $0.',
   minItems: 'Specify a number of items equal to or greater than $0.',
